@@ -21,11 +21,11 @@ SELECT *, ST_IsValidReason(geom) from gis_esri_zip_poly where ST_IsValid(geom) =
 ## Change geom column type
 
 ```
-ALTER TABLE my_table ALTER COLUMN geom  SET DATA TYPE geometry(MultiPolygon) USING ST_Multi(geom);
+ALTER TABLE gis_esri_zip_poly ALTER COLUMN geom SET DATA TYPE geometry(MultiPolygon) USING ST_Multi(geom);
 ```
 
 ## Try fix wrong geom columns
 
 ```
-UPDATE tmp SET geom = ST_SimplifyPreserveTopology(geom, 0.0001) WHERE ST_IsValid(geom) = false;
+UPDATE gis_esri_zip_poly SET geom = ST_SimplifyPreserveTopology(geom, 0.0001) WHERE ST_IsValid(geom) = false;
 ```
