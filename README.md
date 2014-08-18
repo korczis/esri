@@ -97,7 +97,7 @@ bundle exec ./bin/esri database import
 Lookup
 
 ```
-bundle exec ruby ./bin/esri.rb lookup zip "-122.4246 37.80145"
+bundle exec ./bin/esri.rb lookup zip "-122.4246 37.80145"
   zip
 -------
  94109
