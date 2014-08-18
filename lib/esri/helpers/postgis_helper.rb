@@ -52,7 +52,12 @@ module Esri
         end
 
         def lookup_zip
-          puts 'Looking up for zip'
+          point = 'POINT(-122.4246 37.80145)'
+          table = 'gis_esri_zip_poly'
+          where = "st_contains(geom, ST_GeomFromText('#{point}'))"
+          query = "SELECT zip FROM #{table} WHERE #{where}"
+          cmd = "echo \"#{query}\" | #{PSQL_CMD}"
+          system cmd
         end
       end
     end
