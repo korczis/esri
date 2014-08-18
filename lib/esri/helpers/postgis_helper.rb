@@ -25,13 +25,12 @@ module Esri
         end
 
         def index_shapes(shapes, _opts = load_db_config)
-          puts 'Indexing shapes'
           shapes.map do |shape|
             table_name = extract_table_name(shape)
             index_name = "idx_gis_esri_#{table_name}_geom"
             full_table_name = "gis_esri_#{table_name}"
-            query = "CREATE INDEX #{index_name} ON #{full_table_name} USING gist(geom);"
-            puts query
+            query = "CREATE INDEX #{index_name} " \
+                    "ON #{full_table_name} USING gist(geom);"
             cmd = "echo \"#{query}\" | #{PSQL_CMD}"
             puts "Indexing shape #{table_name} using '#{cmd}'"
             system(cmd)
