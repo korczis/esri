@@ -1,0 +1,8 @@
+# Database settings
+
+- db:
+  hostname: localhost
+  port: 5432
+  username: datathon
+  password: datathon
+  database: datathon
