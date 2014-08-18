@@ -5,41 +5,52 @@ require 'pmap'
 require 'pp'
 require 'nokogiri'
 
+require_relative '../core'
+
 module Esri
   # Provider module
   module Dataset
     HOST = 'http://www.baruch.cuny.edu'
     BASE_URL = "#{HOST}/geoportal/data/esri"
     MAIN_PAGE = "#{BASE_URL}/esri_usa.htm"
+    LINK_FILE = File.join(TMP_DIR, 'links.txt')
 
     class << self
+      def extract_links_data(row)
+        href = row.css('td > a').first
+        href = href ? href.text : nil
+        {
+          name: row.css('td:nth-child(1)').text,
+          features: row.css('td:nth-child(2)').text,
+          type: row.css('td:nth-child(3)').text,
+          year: row.css('td:nth-child(4)').text,
+          link: href,
+          url: "#{BASE_URL}/#{href}"
+        }
+      end
+
       def fetch_links
-        puts MAIN_PAGE
         page = Nokogiri::HTML(open(MAIN_PAGE))
 
         data = page.css 'table.tabledata > tr'
         res = data.map do |row|
-          name = row.css('td:nth-child(1)').text
-          features = row.css('td:nth-child(2)').text
-          type = row.css('td:nth-child(3)').text
-          year = row.css('td:nth-child(4)').text
-          link = row.css('td > a').first
-          next if link.nil?
+          res = extract_links_data(row)
 
-          href = link['href']
-          if href.match(/\.zip$/)
+          next if res[:link].nil?
+          next unless res[:link].match(/\.zip$/)
 
-            { :name => name,
-              :features => features,
-              :type => type,
-              :year => year,
-              :link => href,
-              :url => "#{BASE_URL}/#{href}"
-            }
-          end
+          res
         end
 
         res.compact
+      end
+
+      def write_links(links = fetch_links, path = LINK_FILE)
+        File.open(path, 'w') do |f|
+          links.each do |row|
+            f.puts row[:url]
+          end
+        end
       end
     end
   end

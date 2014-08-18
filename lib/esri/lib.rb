@@ -2,6 +2,8 @@
 
 require 'pathname'
 
+require_relative 'core'
+
 # require_relative 'cli/cli'
 
 base = Pathname(__FILE__).dirname.expand_path

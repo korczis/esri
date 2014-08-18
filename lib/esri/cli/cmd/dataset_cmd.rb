@@ -26,6 +26,8 @@ command :dataset do |dataset|
       links.each do |row|
         puts row[:url]
       end
+
+      Esri::Dataset.write_links(links)
     end
   end
 end
