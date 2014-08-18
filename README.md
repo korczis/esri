@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/korczis/esri.svg?branch=master)](https://travis-ci.org/korczis/esri)
 [![Code Climate](https://codeclimate.com/github/korczis/esri/badges/gpa.svg)](https://codeclimate.com/github/korczis/esri)
+[![Coverage Status](https://coveralls.io/repos/korczis/esri/badge.png)](https://coveralls.io/r/korczis/esri)
 
 Parser and Processor of [USA ESRI Data](http://www.baruch.cuny.edu/geoportal/data/esri/esri_usa.htm)
 
