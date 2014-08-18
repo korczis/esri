@@ -35,19 +35,15 @@ module Esri
         }
       end
 
-      def fetch_links
-        page = Nokogiri::HTML(open(MAIN_PAGE))
-
+      def fetch_links(url = MAIN_PAGE)
+        page = Nokogiri::HTML(open(url))
         data = page.css 'table.tabledata > tr'
         res = data.map do |row|
           res = extract_links_data(row)
-
           next if res[:link].nil?
           next unless res[:link].match(/\.zip$/)
-
           res
         end
-
         res.compact
       end
 
