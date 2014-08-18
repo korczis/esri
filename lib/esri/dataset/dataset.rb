@@ -31,7 +31,7 @@ module Esri
           year: row.css('td:nth-child(4)').text,
           link: extract_link_href(href),
           link_title: extract_link_text(href),
-          url: "#{BASE_URL}/#{extract_link_text(href)}"
+          url: "#{BASE_URL}/#{extract_link_href(href)}"
         }
       end
 
