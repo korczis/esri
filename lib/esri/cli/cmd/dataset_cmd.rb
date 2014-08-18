@@ -14,7 +14,7 @@ require_relative '../shared'
 
 desc 'Dataset related operations'
 command :dataset do |dataset|
-  dataset.desc 'Download datasets'
+  dataset.desc 'Download datasets (from links)'
   dataset.command :download do |download|
     download.action do
       links = Esri::Dataset.fetch_links
@@ -23,6 +23,13 @@ command :dataset do |dataset|
       end
 
       Esri::Dataset.download_links(links)
+    end
+  end
+
+  dataset.desc 'Import unpacked datasets'
+  dataset.command :import do |import|
+    import.action do
+      pust 'Importing datasets'
     end
   end
 
@@ -38,7 +45,7 @@ command :dataset do |dataset|
     end
   end
 
-  dataset.desc 'Get datasets Links'
+  dataset.desc 'Get datasets links'
   dataset.command :links do |links|
     links.action do
       links = Esri::Dataset.fetch_links
@@ -50,7 +57,7 @@ command :dataset do |dataset|
     end
   end
 
-  dataset.desc 'List local datasets'
+  dataset.desc 'List local unpacked datasets'
   dataset.command :list do |list|
     list.action do
       datasets = Esri::Dataset.list_datasets
@@ -58,7 +65,7 @@ command :dataset do |dataset|
     end
   end
 
-  dataset.desc 'Unpack datasets'
+  dataset.desc 'Unpack downloaded datasets'
   dataset.command :unpack do |unpack|
     unpack.action do
       datasets = Esri::Dataset.list_datasets
