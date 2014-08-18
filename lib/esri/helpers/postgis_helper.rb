@@ -24,7 +24,7 @@ module Esri
             puts "Importing shape file '#{shape}' as '#{table_name}'"
 
             shp2psql_cmd = "shp2pgsql -c #{shape} public.gis_esri_#{table_name}"
-            psql_cmd = "psql -v -h #{opts[:host]} -d datathon -U datathon"
+            psql_cmd = "psql -h apollocrawler.com -d datathon -U datathon"
 
             pswd = 'export  PGPASSWORD=datathon'
             cmd = "#{pswd} && #{shp2psql_cmd} | #{psql_cmd} > /dev/null"
