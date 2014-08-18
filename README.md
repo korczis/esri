@@ -4,8 +4,13 @@ Parser and Processor of http://www.baruch.cuny.edu/geoportal/data/esri/esri_usa.
 
 ## Prerequisites
 
-- PostgreSQL server with PostGIS Extensions Enabled
-- Ruby / Gems / Bundler
+- [PostgreSQL](http://www.postgresql.org/) server with [PostGIS](http://postgis.net/install/) Extensions enabled
+- [Ruby](https://www.ruby-lang.org/en/) -  dynamic, open source programming language with a focus on simplicity and productivity. 
+- [RVM](http://rvm.io/) - RVM is a command-line tool which allows you to easily install, manage, and work with multiple ruby environments from interpreters to sets of gems.
+- [RubyGems](https://rubygems.org/pages/download) - RubyGems is a package manager for the Ruby.
+- [Bundler](http://bundler.io/) - Bundler provides a consistent environment for Ruby projects by tracking and installing the exact gems and versions that are needed. 
+- [Git](http://git-scm.com/downloads) - Git is a distributed version control system /
+- [aria2](http://aria2.sourceforge.net/) - is a lightweight multi-protocol & multi-source command-line download utility. 
 
 ## Getting Started
 
