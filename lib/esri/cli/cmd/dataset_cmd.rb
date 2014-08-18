@@ -26,13 +26,6 @@ command :dataset do |dataset|
     end
   end
 
-  dataset.desc 'Import unpacked datasets'
-  dataset.command :import do |import|
-    import.action do
-      Esri::Dataset.import_shapes
-    end
-  end
-
   dataset.desc 'Info about datasets'
   dataset.command :info do |info|
     info.action do
@@ -62,6 +55,13 @@ command :dataset do |dataset|
     list.action do
       datasets = Esri::Dataset.list_datasets
       puts datasets
+    end
+  end
+
+  dataset.desc 'Remove local datasets'
+  dataset.command :remove do |remove|
+    remove.action do
+      puts 'Removing local datasets'
     end
   end
 

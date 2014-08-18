@@ -83,3 +83,9 @@ Extracting /Users/tomaskorcak/dev/esri/tmp/zip_poly/zip_poly.shp, 629900316 Byte
 Extracting /Users/tomaskorcak/dev/esri/tmp/zip_poly/zip_poly.shp.xml, 176518 Bytes
 Extracting /Users/tomaskorcak/dev/esri/tmp/zip_poly/zip_poly.shx, 242956 Bytes
 ```
+
+Import to Database
+
+```
+bundle exec ./bin/esri database import
+```
