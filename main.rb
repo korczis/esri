@@ -7,10 +7,10 @@ require 'pmap'
 require 'pp'
 require 'nokogiri'
 
-# http://www.baruch.cuny.edu/geoportal/data/esri/esri_usa.htm
+# http://www.baruch.cuny.edu/geoportal/data/dataset/esri_usa.htm
 
 HOST = 'http://www.baruch.cuny.edu'
-BASE_URL = "#{HOST}/geoportal/data/esri"
+BASE_URL = "#{HOST}/geoportal/data/dataset"
 MAIN_PAGE = "#{BASE_URL}/esri_usa.htm"
 
 def get_links
