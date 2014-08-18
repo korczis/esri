@@ -10,10 +10,11 @@ module Esri
             table_name = shape.split('/').last.gsub(/\.shp$/, '')
             puts "Importing shape file '#{shape}' as '#{table_name}'"
 
-            shp2psql_cmd = "shp2pgsql -d #{shape} public.#{table_name}"
+            shp2psql_cmd = "shp2pgsql -c #{shape} public.gis_esri_#{table_name}"
             psql_cmd = 'psql -h apollocrawler.com -v -d datathon -U datathon'
 
-            cmd = "PGPASSWORD=datathon && #{shp2psql_cmd} | #{psql_cmd} > /dev/null"
+            pswd = 'PGPASSWORD=datathon'
+            cmd = "#{pswd} && #{shp2psql_cmd} | #{psql_cmd} > /dev/null"
             system cmd
           end
         end
