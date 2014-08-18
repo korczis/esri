@@ -65,4 +65,12 @@ Unpack datasets
 
 ```
 bundle exec ./bin/esri dataset unpack
+
+Extracting /Users/tomaskorcak/dev/esri/tmp/zip_poly/zip_poly.dbf, 18792521 Bytes
+Extracting /Users/tomaskorcak/dev/esri/tmp/zip_poly/zip_poly.prj, 145 Bytes
+Extracting /Users/tomaskorcak/dev/esri/tmp/zip_poly/zip_poly.sbn, 281356 Bytes
+Extracting /Users/tomaskorcak/dev/esri/tmp/zip_poly/zip_poly.sbx, 6348 Bytes
+Extracting /Users/tomaskorcak/dev/esri/tmp/zip_poly/zip_poly.shp, 629900316 Bytes
+Extracting /Users/tomaskorcak/dev/esri/tmp/zip_poly/zip_poly.shp.xml, 176518 Bytes
+Extracting /Users/tomaskorcak/dev/esri/tmp/zip_poly/zip_poly.shx, 242956 Bytes
 ```
