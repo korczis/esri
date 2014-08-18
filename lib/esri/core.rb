@@ -9,4 +9,5 @@ module Esri
   LIB_DIR = File.join(BASE_DIR, 'lib')
   SRC_DIR = File.join(LIB_DIR, 'esri')
   TMP_DIR = File.join(BASE_DIR, 'tmp')
+  LINK_FILE = File.join(TMP_DIR, 'links.txt')
 end

@@ -4,6 +4,7 @@ require 'gli'
 
 include GLI::App
 
+require_relative '../../core'
 require_relative '../../version'
 
 require_relative '../../dataset/dataset.rb'
@@ -15,7 +16,8 @@ command :dataset do |dataset|
   dataset.desc 'Download datasets'
   dataset.command :download do |download|
     download.action do
-      puts Esri::Dataset.fetch_links
+      cmd = "aria2c -i #{Esri::LINK_FILE} -x 16 --dir=#{Esri::DATA_DIR}"
+      system(cmd)
     end
   end
 

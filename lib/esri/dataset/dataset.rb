@@ -13,19 +13,25 @@ module Esri
     HOST = 'http://www.baruch.cuny.edu'
     BASE_URL = "#{HOST}/geoportal/data/esri"
     MAIN_PAGE = "#{BASE_URL}/esri_usa.htm"
-    LINK_FILE = File.join(TMP_DIR, 'links.txt')
 
     class << self
+      def extract_link_href(href)
+        href ? href['href'] : nil
+      end
+
+      def extract_link_text(href)
+        href ? href.text : nil
+      end
+
       def extract_links_data(row)
         href = row.css('td > a').first
-        href = href ? href.text : nil
-        {
-          name: row.css('td:nth-child(1)').text,
+        { name: row.css('td:nth-child(1)').text,
           features: row.css('td:nth-child(2)').text,
           type: row.css('td:nth-child(3)').text,
           year: row.css('td:nth-child(4)').text,
-          link: href,
-          url: "#{BASE_URL}/#{href}"
+          link: extract_link_href(href),
+          link_title: extract_link_text(href),
+          url: "#{BASE_URL}/#{extract_link_text(href)}"
         }
       end
 
