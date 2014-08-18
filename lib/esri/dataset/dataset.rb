@@ -17,7 +17,7 @@ module Esri
     MAIN_PAGE = "#{BASE_URL}/esri_usa.htm"
 
     class << self
-      def download_links(links = fetch_links)
+      def download_links(_links = fetch_links)
         cmd = "aria2c -i #{Esri::LINK_FILE} -x 16 --dir=#{Esri::TMP_DIR}"
         system(cmd)
       end
