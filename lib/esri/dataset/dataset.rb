@@ -7,6 +7,7 @@ require 'nokogiri'
 require 'zip'
 
 require_relative '../core'
+require_relative '../helpers/postgis_helper'
 require_relative '../helpers/zip_helper'
 
 module Esri
@@ -54,8 +55,18 @@ module Esri
         res.compact
       end
 
+      def import_shapes(shapes = list_shapes)
+        Helpers::PostgisHelper.import_shapes(shapes)
+      end
+
       def list_datasets(dir = TMP_DIR)
         Dir["#{dir}/*.zip"].map do |f|
+          f
+        end
+      end
+
+      def list_shapes(dir = TMP_DIR)
+        Dir["#{dir}/**/*.shp"].map do |f|
           f
         end
       end
