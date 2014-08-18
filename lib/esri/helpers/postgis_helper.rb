@@ -8,6 +8,7 @@ module Esri
   module Helpers
     # PostGIS helpers
     module PostgisHelper
+      PSWD = 'export PGPASSWORD=datathon'
       PSQL_CMD = 'psql -h apollocrawler.com -d datathon -U datathon'
 
       class << self
@@ -45,10 +46,13 @@ module Esri
             shp2psql_cmd = "shp2pgsql -c #{shape} public.gis_esri_#{table_name}"
             psql_cmd = PSQL_CMD
 
-            pswd = 'export PGPASSWORD=datathon'
-            cmd = "#{pswd} && #{shp2psql_cmd} | #{psql_cmd} > /dev/null"
+            cmd = "#{PSWD} && #{shp2psql_cmd} | #{psql_cmd} > /dev/null"
             system cmd
           end
+        end
+
+        def lookup_zip
+          puts 'Looking up for zip'
         end
       end
     end

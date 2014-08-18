@@ -75,6 +75,10 @@ module Esri
         end
       end
 
+      def lookup_zip
+        Helpers::PostgisHelper.lookup_zip
+      end
+
       def unpack_datasets(datasets = list_datasets)
         puts 'Unpacking datasets'
         datasets.map do |ds|
