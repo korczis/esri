@@ -13,6 +13,9 @@ Intall required gems
 
 ```
 bundle
+
+Your bundle is complete!
+Use `bundle show [gemname]` to see where a bundled gem is installed.
 ```
 
 Display info about datasets
