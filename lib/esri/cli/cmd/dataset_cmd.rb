@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 require 'gli'
+require 'json'
 
 include GLI::App
 
@@ -16,8 +17,24 @@ command :dataset do |dataset|
   dataset.desc 'Download datasets'
   dataset.command :download do |download|
     download.action do
-      cmd = "aria2c -i #{Esri::LINK_FILE} -x 16 --dir=#{Esri::DATA_DIR}"
-      system(cmd)
+      links = Esri::Dataset.fetch_links
+      links.each do |row|
+        puts row[:url]
+      end
+
+      Esri::Dataset.download_links(links)
+    end
+  end
+
+  dataset.desc 'Info about datasets'
+  dataset.command :info do |info|
+    info.action do
+      links = Esri::Dataset.fetch_links
+      links.each do |row|
+        puts JSON.pretty_generate(row)
+      end
+
+      Esri::Dataset.write_links(links)
     end
   end
 
@@ -30,6 +47,22 @@ command :dataset do |dataset|
       end
 
       Esri::Dataset.write_links(links)
+    end
+  end
+
+  dataset.desc 'List local datasets'
+  dataset.command :list do |list|
+    list.action do
+      datasets = Esri::Dataset.list_datasets
+      puts datasets
+    end
+  end
+
+  dataset.desc 'Unpack datasets'
+  dataset.command :unpack do |unpack|
+    unpack.action do
+      datasets = Esri::Dataset.list_datasets
+      puts datasets
     end
   end
 end

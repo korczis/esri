@@ -15,6 +15,11 @@ module Esri
     MAIN_PAGE = "#{BASE_URL}/esri_usa.htm"
 
     class << self
+      def download_links(links = fetch_links)
+        cmd = "aria2c -i #{Esri::LINK_FILE} -x 16 --dir=#{Esri::TMP_DIR}"
+        system(cmd)
+      end
+
       def extract_link_href(href)
         href ? href['href'] : nil
       end
@@ -45,6 +50,12 @@ module Esri
           res
         end
         res.compact
+      end
+
+      def list_datasets(dir = TMP_DIR)
+        Dir["#{dir}/*.zip"].map do |f|
+          f
+        end
       end
 
       def write_links(links = fetch_links, path = LINK_FILE)
