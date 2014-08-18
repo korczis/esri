@@ -103,3 +103,20 @@ bundle exec ./bin/esri.rb lookup zip "-122.4246 37.80145"
  94109
 (1 row)
 ```
+
+## Performance 
+
+```
+datathon=# EXPLAIN ANALYZE SELECT zip FROM gis_esri_zip_poly WHERE st_contains(geom, ST_GeomFromText('POINT(-122.4246 37.80145)'));
+                                                               QUERY PLAN
+----------------------------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on gis_esri_zip_poly  (cost=206.32..8518.15 rows=2024 width=98) (actual time=0.142..0.235 rows=1 loops=1)
+   Recheck Cond: (geom && '01010000006C787AA52C9B5EC08AB0E1E995E64240'::geometry)
+   Filter: _st_contains(geom, '01010000006C787AA52C9B5EC08AB0E1E995E64240'::geometry)
+   Rows Removed by Filter: 2
+   ->  Bitmap Index Scan on idx_gis_esri_zip_poly_geom  (cost=0.00..205.81 rows=6071 width=0) (actual time=0.117..0.117 rows=3 loops=1)
+         Index Cond: (geom && '01010000006C787AA52C9B5EC08AB0E1E995E64240'::geometry)
+ Total runtime: 0.268 ms
+(7 rows)
+
+```
