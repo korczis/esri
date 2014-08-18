@@ -4,8 +4,10 @@ require 'open-uri'
 require 'pmap'
 require 'pp'
 require 'nokogiri'
+require 'zip'
 
 require_relative '../core'
+require_relative '../helpers/zip_helper'
 
 module Esri
   # Provider module
@@ -55,6 +57,14 @@ module Esri
       def list_datasets(dir = TMP_DIR)
         Dir["#{dir}/*.zip"].map do |f|
           f
+        end
+      end
+
+      def unpack_datasets(datasets = list_datasets)
+        puts 'Unpacking datasets'
+        datasets.map do |ds|
+          dest_dir = ds.split('/').last.gsub(/\.zip$/, '')
+          Helpers::ZipHelper.unzip_to(ds, "#{File.join(TMP_DIR, dest_dir)}")
         end
       end
 

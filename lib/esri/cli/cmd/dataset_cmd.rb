@@ -62,7 +62,7 @@ command :dataset do |dataset|
   dataset.command :unpack do |unpack|
     unpack.action do
       datasets = Esri::Dataset.list_datasets
-      puts datasets
+      Esri::Dataset.unpack_datasets(datasets)
     end
   end
 end
