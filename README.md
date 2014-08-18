@@ -2,6 +2,8 @@
 
 Parser and Processor of http://www.baruch.cuny.edu/geoportal/data/esri/esri_usa.htm
 
+[![Build Status](https://travis-ci.org/korczis/esri.svg?branch=master)](https://travis-ci.org/korczis/esri)
+
 ## Prerequisites
 
 - PostgreSQL server with PostGIS Extensions Enabled
