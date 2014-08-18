@@ -20,4 +20,11 @@ command :database do |cmd|
       Esri::Dataset.import_shapes
     end
   end
+
+  cmd.desc 'Index imported datesets'
+  cmd.command :index do |index|
+    index.action do
+      Esri::Dataset.index_datasets
+    end
+  end
 end

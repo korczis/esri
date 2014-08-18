@@ -59,6 +59,10 @@ module Esri
         Helpers::PostgisHelper.import_shapes(shapes)
       end
 
+      def index_datasets(shapes = list_shapes)
+        Helpers::PostgisHelper.index_shapes(shapes)
+      end
+
       def list_datasets(dir = TMP_DIR)
         Dir["#{dir}/*.zip"].map do |f|
           f
