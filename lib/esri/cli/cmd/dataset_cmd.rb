@@ -15,7 +15,7 @@ command :dataset do |dataset|
   dataset.desc 'Links'
   dataset.command :links do |links|
     links.action do
-      pp Esri::Dataset.fetch_links
+      puts Esri::Dataset.fetch_links
     end
   end
 end
