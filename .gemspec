@@ -30,8 +30,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'nokogiri'
   s.add_dependency 'pmap'
   s.add_dependency 'rake', '~> 10.3', '>= 10.3.2'
-  s.add_dependency 'rubyzip'
   s.add_dependency 'terminal-table', '~> 1.4', '>= 1.4.5'
+  s.add_dependency 'zip'
 
   s.add_development_dependency 'coveralls', '~> 0.7', '>= 0.7.0r'
   s.add_development_dependency 'rspec', '~> 3.0', '>= 3.0.0'
