@@ -17,14 +17,26 @@ module Esri
         puts MAIN_PAGE
         page = Nokogiri::HTML(open(MAIN_PAGE))
 
-        data = page.css 'table.tabledata > tr > td > a'
+        data = page.css 'table.tabledata > tr'
         res = data.map do |row|
-          href = row['href']
+          name = row.css('td:nth-child(1)').text
+          features = row.css('td:nth-child(2)').text
+          type = row.css('td:nth-child(3)').text
+          year = row.css('td:nth-child(4)').text
+          link = row.css('td > a').first
+          next if link.nil?
 
-          next if href.nil?
-          next unless href.match(/\.zip$/)
+          href = link['href']
+          if href.match(/\.zip$/)
 
-          "#{BASE_URL}/#{href}"
+            { :name => name,
+              :features => features,
+              :type => type,
+              :year => year,
+              :link => href,
+              :url => "#{BASE_URL}/#{href}"
+            }
+          end
         end
 
         res.compact
