@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-gem 'nokogiri'
-gem 'pmap'
+# Specify your gem's dependencies in gooddata.gemspec
+gemspec
