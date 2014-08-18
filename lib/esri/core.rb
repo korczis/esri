@@ -4,7 +4,7 @@ require 'pathname'
 
 # ESRI module
 module Esri
-  BASE_DIR = File.join(File.dirname(__FILE__), '..', '..')
+  BASE_DIR = File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
   DATA_DIR = File.join(BASE_DIR, 'data')
   LIB_DIR = File.join(BASE_DIR, 'lib')
   SRC_DIR = File.join(LIB_DIR, 'esri')
