@@ -50,6 +50,15 @@ Download datasets
 
 ```
 bundle exec ./bin/esri dataset download
+
+8060e7|OK  |   0.9MiB/s|/Users/tomaskorcak/dev/esri/tmp/dtl_wat.zip
+dc1d92|OK  |   322KiB/s|/Users/tomaskorcak/dev/esri/tmp/rail100k.zip
+3bd75a|OK  |   695KiB/s|/Users/tomaskorcak/dev/esri/tmp/mjr_hwys.zip
+9d3ff8|OK  |   0.9MiB/s|/Users/tomaskorcak/dev/esri/tmp/highways.zip
+ab66ab|OK  |   1.7MiB/s|/Users/tomaskorcak/dev/esri/tmp/dtl_riv.zip
+
+Status Legend:
+(OK):download completed.
 ```
 
 Unpack datasets
