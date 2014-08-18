@@ -29,7 +29,7 @@ command :dataset do |dataset|
   dataset.desc 'Import unpacked datasets'
   dataset.command :import do |import|
     import.action do
-      pust 'Importing datasets'
+      puts 'Importing datasets'
     end
   end
 
