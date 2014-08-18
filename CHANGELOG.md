@@ -2,6 +2,7 @@
 
 ## O.0.2
 
+- Added "dataset import" command - for importing data to postgresql
 - Storing all metadata in tmp instead of data, using data for configs
 - Added "dataset unpack" command - for unpacking downloaded datasets ".zip"
 - Added "dataset download" command - for downloading datasets (.zip)

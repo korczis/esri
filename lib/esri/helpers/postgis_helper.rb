@@ -9,7 +9,11 @@ module Esri
           shapes.map do |shape|
             table_name = shape.split('/').last.gsub(/\.shp$/, '')
             puts "Importing shape file '#{shape}' as '#{table_name}'"
-            cmd = "shp2pgsql -c #{shape} public.#{table_name} | psql -h apollocrawler.com -v  -d datathon -U datathon > /dev/null"
+
+            shp2psql_cmd = "shp2pgsql -c #{shape} public.#{table_name}"
+            psql_cmd = 'psql -h apollocrawler.com -v -d datathon -U datathon'
+
+            cmd = "#{shp2psql_cmd} | #{psql_cmd} > /dev/null"
             system cmd
           end
         end
