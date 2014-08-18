@@ -9,6 +9,10 @@ Parser and Processor of [USA ESRI Data](http://www.baruch.cuny.edu/geoportal/dat
 ## Prerequisites
 
 - [PostgreSQL](http://www.postgresql.org/) server with [PostGIS](http://postgis.net/install/) Extensions enabled
+  - database: datathon
+  - username: datathon
+  - password: datathon
+  - permissons: can create table
 - [Ruby](https://www.ruby-lang.org/en/) -  dynamic, open source programming language with a focus on simplicity and productivity. 
 - [RVM](http://rvm.io/) - RVM is a command-line tool which allows you to easily install, manage, and work with multiple ruby environments from interpreters to sets of gems.
 - [RubyGems](https://rubygems.org/pages/download) - RubyGems is a package manager for the Ruby.
