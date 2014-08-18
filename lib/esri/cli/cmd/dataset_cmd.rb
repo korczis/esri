@@ -19,4 +19,3 @@ command :dataset do |dataset|
     end
   end
 end
-

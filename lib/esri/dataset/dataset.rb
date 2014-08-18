@@ -19,12 +19,12 @@ module Esri
 
         data = page.css 'table.tabledata > tr > td > a'
         res = data.map do |row|
-          href = row["href"]
+          href = row['href']
 
           next if href.nil?
           next unless href.match(/\.zip$/)
 
-          url = "#{BASE_URL}/#{href}"
+          "#{BASE_URL}/#{href}"
         end
 
         res.compact
