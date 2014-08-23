@@ -55,7 +55,7 @@ module Esri
           point = "POINT(#{lng} #{lat})"
           table = 'gis_esri_zip_poly'
           where = "st_contains(geom, ST_GeomFromText('#{point}'))"
-          query = "SELECT zip, state FROM #{table} WHERE #{where}"
+          query = "SELECT * FROM #{table} WHERE #{where}" # zip, state
           cmd = "echo \"#{query}\" | #{PSQL_CMD}"
           system cmd
         end

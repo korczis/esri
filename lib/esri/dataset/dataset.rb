@@ -76,7 +76,7 @@ module Esri
       end
 
       def lookup_zip(lng, lat)
-          Helpers::PostgisHelper.lookup_zip(lng, lat)
+        Helpers::PostgisHelper.lookup_zip(lng, lat)
       end
 
       def unpack_datasets(datasets = list_datasets)
